@@ -33,10 +33,7 @@
                 <td>{{item.dataTermino | readableDate}}</td>
                 <td>{{item.status}}</td>
                 <td class="commands">
-                    <!--<span v-if="item.status == 'ABERTO'" class="glyphicon glyphicon-ok" aria-hidden="true" title="Aceitar" style="color: green" @click="aceita(item)"></span>
-                    <span v-if="item.status == 'ABERTO'" class="glyphicon glyphicon-remove" aria-hidden="true" title="Rejeitar" style="color: red" @click="rejeita(item)"></span>
-                    <span v-if="item.status == 'ACEITO'" class="glyphicon glyphicon-remove" aria-hidden="true" title="Cancelar" style="color: red" @click="cancela(item)"></span>
-                    -->
+
                     <font-awesome-icon icon="fa-regular fa-circle-check" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Aceitar" style="color: green" @click="aceita(item)"/>
                     <font-awesome-icon icon="fa-regular fa-circle-xmark" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Rejeitar" style="color: red" @click="rejeita(item)"/>
                     <font-awesome-icon icon="fa-solid fa-ban" v-if="item.status == 'ACEITO'" aria-hidden="true" title="Cancelar" style="color: red" @click="cancela(item)"/>

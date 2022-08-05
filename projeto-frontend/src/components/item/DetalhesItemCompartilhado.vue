@@ -59,7 +59,6 @@
             <td>{{compartilhamento.nomeUsuario}}</td>
             <td>{{compartilhamento.status}}</td>
             <td class="commands">
-              <!--<span v-if="!compartilhamento.status.includes('CANCELADO')" class="glyphicon glyphicon-remove" aria-hidden="true" title="Cancelar" style="color: red" @click="confirma(compartilhamento)"></span>-->
               <font-awesome-icon icon="fa-solid fa-ban" v-if="!compartilhamento.status.includes('CANCELADO')" aria-hidden="true" title="Cancelar" style="color: red" @click="confirma(compartilhamento)"/>
               
             </td>
