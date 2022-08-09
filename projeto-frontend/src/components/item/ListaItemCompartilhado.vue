@@ -71,7 +71,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
   </main><!-- End #main -->
