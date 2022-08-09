@@ -37,7 +37,7 @@ projeto-backend/testes.txt
 projeto-backend/mvnw
 projeto-backend/mvnw.cmd
 projeto-backend/HELP.md
-projeto-backend/src/main/resources/application.properties
+projeto-backend/src/main/resources/application-default.properties
 
 # MacOS
 .DS_Store

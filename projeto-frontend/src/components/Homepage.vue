@@ -27,7 +27,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <vue-typed-js :strings="['Nos oferecemos um sistema de compartilhamento moderno!']" :loop="true" :showCursor="false" class="d-flex justify-content-around">
+          <vue-typed-js :strings="['Nós oferecemos um sistema de compartilhamento moderno!']" :loop="false" :showCursor="false" class="d-flex justify-content-around">
             <h1 class="typing" data-aos="fade-up"></h1>
           </vue-typed-js>
           <div data-aos="fade-up" data-aos-delay="600">
@@ -59,23 +59,23 @@
             <div class="box">
               <img src="/src/assets/img/values-1.png" class="img-fluid" alt="">
               <h3>Senso de comunidade</h3>
-              <p>Faca parte de uma comunidade incrivel, onde voce pode interagir e fazer amizades.</p>
+              <p>Faça parte de uma comunidade incrível, onde você pode interagir e fazer amizades.</p>
             </div>
           </div>
 
           <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
             <div class="box">
               <img src="/src/assets/img/values-2.png" class="img-fluid" alt="">
-              <h3>Inovacao</h3>
-              <p>Compartilhe qualquer tipo de item, sendo eles unicos ou multiplos.</p>
+              <h3>Inovação</h3>
+              <p>Compartilhe qualquer tipo de item, sendo eles únicos ou múltiplos.</p>
             </div>
           </div>
 
           <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
             <div class="box">
               <img src="/src/assets/img/values-3.png" class="img-fluid" alt="">
-              <h3>Flexibilidade.</h3>
-              <p>Cancele seus compartilhamentos a hora que achar mais conveniente com seguranca garantida.</p>
+              <h3>Flexibilidade</h3>
+              <p>Cancele seus compartilhamentos a hora que achar mais conveniente com segurança garantida.</p>
             </div>
           </div>
 
@@ -107,7 +107,7 @@
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Seguranca</h3>
+                  <h3>Segurança</h3>
                 </div>
               </div>
 
@@ -128,7 +128,7 @@
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Inovacao</h3>
+                  <h3>Inovação</h3>
                 </div>
               </div>
 
@@ -142,7 +142,7 @@
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Inclusao</h3>
+                  <h3>Inclusão</h3>
                 </div>
               </div>
 

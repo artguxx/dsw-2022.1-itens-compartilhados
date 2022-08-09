@@ -37,8 +37,8 @@
               <a href="/" class="logo d-flex align-items-center">
                 <span>Shared4U</span>
               </a>
-              <p>Shared4U eh uma plataforma onde voce pode compartilhar seus itens com outros usuarios gratis!
-              Venha participar da nossa comunidade e desfrute dessa experiencia unica que proporcionamos!
+              <p>Shared4U é uma plataforma onde você pode compartilhar seus itens com outros usuários grátis!
+              Venha participar da nossa comunidade e desfrute dessa experiência única que proporcionamos!
               Crie sua conta agora mesmo e comece a compartilhar!!</p>
             </div>
 
