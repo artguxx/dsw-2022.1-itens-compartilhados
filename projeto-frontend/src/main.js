@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import VueTypedJs from 'vue-typed-js'
 import App from './App.vue'
 import Homepage from './components/Homepage.vue'
 import Login from './components/login/login/Login.vue'
@@ -40,7 +40,7 @@ import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faPenToSquare, faEye, faCircleCheck, faCircleXmark, faBan, faTrashCan)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
+Vue.use(VueTypedJs)
 Vue.use(Router)
 
 const router = new Router({

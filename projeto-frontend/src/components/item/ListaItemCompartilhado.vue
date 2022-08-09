@@ -1,61 +1,81 @@
 <template lang="html">
-  <div class="lista-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="col-md-10 col-md-offset-1 text-left">
-      <div>
-        <div class="header">
-          <h2 class="form-title">Itens Compartilhados</h2>
-          <h6 class="form-subtitle">Abaixo estão os seus itens compartilhados.</h6>
+ <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Itens Compartilhados</li>
+        </ol>
+        <h2>Itens Compartilhados</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+          <div class="lista-items-compartilhados row" v-if="this.$root.credentials">
+            <div class="col-md-10 col-md-offset-1 text-left">
+                <h2 class="form-title">Itens Compartilhados</h2>
+                <h6 class="form-subtitle mx-3">Abaixo estão os seus itens compartilhados.</h6>
+                <div class="new-button">
+                  <nav class="navbar">
+                    <ul>
+                      <li><button type="button" class="getstarted scrollto" @click="novo">Novo Item</button></li>
+                    </ul>
+                  </nav>
+                </div>
+
+              <div class="form-inline">
+                <input class="form-control" @keyup="processForm()" type="search" placeholder="Pesquisar" aria-label="Search" id="inputFiltro" v-model="filtro" v-on:keyup.enter="processForm">
+              </div>
+
+              <table class="table table-striped" id="tbItens"  v-if="this.items.length > 0">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th class="commands"></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr v-for="item in items">
+                  <td>{{item.nome}}</td>
+                  <td>{{item.descricao}}</td>
+                  <td>{{item.tipo}}</td>
+                  <td class="commands">
+                    <font-awesome-icon icon="fa-regular fa-pen-to-square" class="mx-1" aria-hidden="true" title="Editar" @click="edita(item)"/>
+                    <font-awesome-icon icon="fa-regular fa-eye" class="mx-1" aria-hidden="true" title="Detalhes" style="color:blue" @click="detalhe(item)"/>
+                    <font-awesome-icon icon="fa-regular fa-trash-can" class="mx-1" aria-hidden="true" title="Cancelar" style="color: red" @click="remove(item)"/>
+                  </td>
+                </tr>
+              </tbody>
+              </table>
+
+              <div class="mt-5">
+                <div class="page-item first" :class="{ disable: this.page == 1 }" @click="moveTo(page-1)">&lt;&lt;</div>
+                <div class="page-item" v-if="page > 3" @click="moveTo(page-3)">{{page-3}}</div>
+                <div class="page-item" v-if="page > 2" @click="moveTo(page-2)">{{page-2}}</div>
+                <div class="page-item" v-if="page > 1" @click="moveTo(page-1)">{{page-1}}</div>
+                <div class="page-item current disable">{{page}}</div>
+                <div class="page-item" v-if="totalPages > page"   @click="moveTo(page+1)">{{page+1}}</div>
+                <div class="page-item" v-if="totalPages > page+1" @click="moveTo(page+2)">{{page+2}}</div>
+                <div class="page-item" v-if="totalPages > page+2" @click="moveTo(page+3)">{{page+3}}</div>
+                <div class="page-item last" :class="{ disable: this.page == this.totalPages }" @click="moveTo(page+1)">&gt;&gt;</div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="new-button">
-          <button type="button" class="btn btn-primary" @click="novo">Novo Item</button>
-        </div>
-        <div class="clear"></div>
       </div>
+    </section>
 
-      <div class="form-inline">
-        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" id="inputFiltro" v-model="filtro" v-on:keyup.enter="processForm">
-        <button class="btn btn-outline-success" @click="processForm()">Pesquisar</button>
-      </div>
+  </main><!-- End #main -->
 
-      <table class="table table-striped" id="tbItens">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Descrição</th>
-          <th>Tipo</th>
-          <th class="commands"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr v-for="item in items">
-          <td>{{item.nome}}</td>
-          <td>{{item.descricao}}</td>
-          <td>{{item.tipo}}</td>
-          <td class="commands">
-            <font-awesome-icon icon="fa-regular fa-pen-to-square" aria-hidden="true" title="Editar" @click="edita(item)"/>
-            <font-awesome-icon icon="fa-regular fa-eye" aria-hidden="true" title="Detalhes" style="color:blue" @click="detalhe(item)"/>
-            <font-awesome-icon icon="fa-regular fa-trash-can" aria-hidden="true" title="Cancelar" style="color: red" @click="remove(item)"/>
-          </td>
-        </tr>
-      </tbody>
-      </table>
-
-      <div>
-        <div class="page-item first" :class="{ disable: this.page == 1 }" @click="moveTo(page-1)">&lt;&lt;</div>
-        <div class="page-item" v-if="page > 3" @click="moveTo(page-3)">{{page-3}}</div>
-        <div class="page-item" v-if="page > 2" @click="moveTo(page-2)">{{page-2}}</div>
-        <div class="page-item" v-if="page > 1" @click="moveTo(page-1)">{{page-1}}</div>
-        <div class="page-item current disable">{{page}}</div>
-        <div class="page-item" v-if="totalPages > page"   @click="moveTo(page+1)">{{page+1}}</div>
-        <div class="page-item" v-if="totalPages > page+1" @click="moveTo(page+2)">{{page+2}}</div>
-        <div class="page-item" v-if="totalPages > page+2" @click="moveTo(page+3)">{{page+3}}</div>
-        <div class="page-item last" :class="{ disable: this.page == this.totalPages }" @click="moveTo(page+1)">&gt;&gt;</div>
-        <div class="clear"></div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>

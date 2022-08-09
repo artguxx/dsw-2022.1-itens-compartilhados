@@ -1,40 +1,63 @@
 <template lang="html">
-  <div class="form-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="col-md-10 col-md-offset-1 text-left">
-      <h2 class="form-title">Edição de item compartilhado</h2>
-      <h6 class="form-subtitle">Entre com os dados do item compartilhado.</h6>
+  <main id="main">
 
-      <div class="success" v-if="success">
-        Os dados do item foram atualizados.
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><router-link class="link" :to="{ name: 'item-list' }">Itens Compartilhados</router-link></li>
+          <li>Editar Item</li>
+        </ol>
+        <h2>Editar Item</h2>
+
       </div>
+    </section><!-- End Breadcrumbs -->
 
-      <form @submit.prevent="processForm">
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" placeholder="Entre o nome do item" v-model="item.nome">
-          <span class="error" v-if="error.nome">{{error.nome}}</span>
+    <section class="inner-page">
+      <div class="container">
+        <div class="form-items-compartilhados row" v-if="this.$root.credentials">
+          <div class="col-md-10 col-md-offset-1 text-left">
+            <h2 class="form-title">Edição de item compartilhado</h2>
+            <h6 class="form-subtitle mx-3">Entre com os dados do item compartilhado.</h6>
+
+            <div class="success" v-if="success">
+              Os dados do item foram atualizados.
+            </div>
+
+            <form @submit.prevent="processForm">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Entre o nome do item" v-model="item.nome">
+                <span class="error" v-if="error.nome">{{error.nome}}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea rows="3" cols="80" class="form-control" id="descricao" placeholder="Descreva o item" v-model="item.descricao"/>
+                <span class="error" v-if="error.descricao">{{error.descricao}}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select class="form-control" id="tipo" v-model="item.tipo">
+                  <option value="">Selecione o tipo do item</option>
+                  <option value="UNICO">Item único</option>
+                  <option value="MULTIPLO">Item múltiplo</option>
+                </select>
+                <span class="error" v-if="error.tipo">{{error.tipo}}</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="background-color: #4154f1">Atualizar</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="form-group">
-          <label for="descricao">Descrição</label>
-          <textarea rows="3" cols="80" class="form-control" id="descricao" placeholder="Descreva o item" v-model="item.descricao"/>
-          <span class="error" v-if="error.descricao">{{error.descricao}}</span>
-        </div>
-
-        <div class="form-group">
-          <label for="tipo">Tipo</label>
-          <select class="form-control" id="tipo" v-model="item.tipo">
-            <option value="">Selecione o tipo do item</option>
-            <option value="UNICO">Item único</option>
-            <option value="MULTIPLO">Item múltiplo</option>
-          </select>
-          <span class="error" v-if="error.tipo">{{error.tipo}}</span>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Envia</button>
-      </form>
-    </div>
-  </div>
+  </main><!-- End #main -->
+  
 </template>
 
 <script>

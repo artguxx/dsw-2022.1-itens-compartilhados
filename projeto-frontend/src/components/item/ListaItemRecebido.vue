@@ -1,64 +1,87 @@
 <template lang="html">
-  <div class="lista-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="col-md-10 col-md-offset-1 text-left">
-      <div>
-        <div class="header">
-          <h2 class="form-title">Itens Recebidos</h2>
-          <h6 class="form-subtitle">Abaixo estão os seus itens recebidos.</h6>
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Itens recebidos</li>
+        </ol>
+        <h2>Itens recebidos</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="lista-items-compartilhados row" v-if="this.$root.credentials">
+          <div class="col-md-10 col-md-offset-1 text-left">
+            <div>
+              <div class="d-flex flex-direction-column">
+                <div class="header">
+                  <h2 class="form-title">Itens Recebidos</h2>
+                  <h6 class="form-subtitle mx-3">Abaixo estão os seus itens recebidos.</h6>
+                </div>
+                </div>
+                
+                <div class="form-inline">
+                  <input class="form-control" @keyup="processForm()" type="search" placeholder="Pesquisar" aria-label="Search" id="inputFiltro" v-model="filtro" v-on:keyup.enter="processForm">
+                </div>
+              </div>
+
+            <table class="table table-striped" id="tbItens">
+              <thead>
+                  <tr>
+                      <th>Nome</th>
+                      <th>Dono</th>
+                      <th>Data Início</th>
+                      <th>Data Término</th>
+                      <th>Status</th>
+                      <th class="commands"></th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  <tr v-for="item in items">
+                      <td>{{item.itemCompartilhado.nome}}</td>
+                      <td>{{item.nomeDono}}</td>
+                      <td>{{item.dataInicio | readableDate}}</td>
+                      <td>{{item.dataTermino | readableDate}}</td>
+                      <td>{{item.status}}</td>
+                      <td class="commands">
+
+                          <font-awesome-icon icon="fa-regular fa-circle-check" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Aceitar" style="color: green" @click="aceita(item)"/>
+                          <font-awesome-icon icon="fa-regular fa-circle-xmark" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Rejeitar" style="color: red" @click="rejeita(item)"/>
+                          <font-awesome-icon icon="fa-solid fa-ban" v-if="item.status == 'ACEITO'" aria-hidden="true" title="Cancelar" style="color: red" @click="cancela(item)"/>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+
+            <div v-if="checkRejeita">
+              <span>Tem certeza que deseja rejeitar este compartilhamento?</span>
+              <button class="btn btn-danger" @click="confirmaRejeita(toRejeita)">Sim</button>
+            </div>
+
+            <div v-if="checkAceita">
+                <span>Tem certeza que deseja aceitar este compartilhamento?</span>
+                <button class="btn btn-success" @click="confirmaAceita(toAceita)">Sim</button>
+            </div>
+
+            <div v-if="checkCancela">
+              <span>Tem certeza que deseja cancelar este compartilhamento?</span>
+              <button class="btn btn-danger" @click="confirmaCancela(toCancela)">Sim</button>
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <div class="form-inline">
-        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" id="inputFiltro" v-model="filtro" v-on:keyup.enter="processForm">
-        <button class="btn btn-outline-success" @click="processForm()">Pesquisar</button>
-      </div>
-
-      <table class="table table-striped" id="tbItens">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Dono</th>
-                <th>Data Início</th>
-                <th>Data Término</th>
-                <th>Status</th>
-                <th class="commands"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr v-for="item in items">
-                <td>{{item.itemCompartilhado.nome}}</td>
-                <td>{{item.nomeDono}}</td>
-                <td>{{item.dataInicio | readableDate}}</td>
-                <td>{{item.dataTermino | readableDate}}</td>
-                <td>{{item.status}}</td>
-                <td class="commands">
-
-                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Aceitar" style="color: green" @click="aceita(item)"/>
-                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-if="item.status == 'ABERTO'" aria-hidden="true" title="Rejeitar" style="color: red" @click="rejeita(item)"/>
-                    <font-awesome-icon icon="fa-solid fa-ban" v-if="item.status == 'ACEITO'" aria-hidden="true" title="Cancelar" style="color: red" @click="cancela(item)"/>
-                </td>
-            </tr>
-        </tbody>
-      </table>
-
-      <div v-if="checkRejeita">
-        <span>Tem certeza que deseja rejeitar este compartilhamento?</span>
-        <button class="btn btn-danger" @click="confirmaRejeita(toRejeita)">Sim</button>
-      </div>
-
-      <div v-if="checkAceita">
-          <span>Tem certeza que deseja aceitar este compartilhamento?</span>
-          <button class="btn btn-success" @click="confirmaAceita(toAceita)">Sim</button>
-      </div>
-
-      <div v-if="checkCancela">
-        <span>Tem certeza que deseja cancelar este compartilhamento?</span>
-        <button class="btn btn-danger" @click="confirmaCancela(toCancela)">Sim</button>
-      </div>
-    </div>
-
-  </div>
+  </main><!-- End #main -->
+  
 </template>
 
 <script>

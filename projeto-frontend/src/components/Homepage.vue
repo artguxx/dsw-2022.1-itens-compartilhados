@@ -1,61 +1,162 @@
 <template lang="html">
   <div>
-    <div class="login">
-      <div class="row jumbotron-row">
-        <div class="col-md-offset-1 col-md-10">
-          <div class="jumbotron text-center">
-            <h1>Jumbotron heading</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <!-- <div class="jumbotron text-center">
+      <div v-if="$root.credentials">
+        <div v-if="this.qtdItensAbertos > 0">
+          <vue-typed-js :strings="[`Você tem ${this.qtdItensAbertos} ite${this.qtdItensAbertos == 1 ? 'm':'ns'} recebidos abertos.`]" :loop="true" :showCursor="false" class="d-flex justify-content-around">
+            <p class="typing text-danger"></p>
+          </vue-typed-js>
+        </div>
+        <div v-else>
+          <vue-typed-js :strings="['Você não tem itens recebidos abertos.']" :loop="true" :showCursor="false" class="d-flex justify-content-around">
+            <p class="typing text-primary"></p>
+          </vue-typed-js>
+        </div>
+        
+      </div>
+      <div v-else>
+        <vue-typed-js :strings="['Faca login para ter a experiencia completa!']" :loop="true" :showCursor="false" class="d-flex justify-content-around">
+            <p class="typing text-danger"></p>
+          </vue-typed-js>
+      </div>
+    </div> -->
 
-            <p v-if="!$root.credentials">
-              <router-link class="link" :to="{ name: 'login' }">
-                <a class="btn btn-lg btn-success" href="#" role="button">Login</a>
-              </router-link>
-            </p>
-            <div v-else>
-              <p v-if="qtdItensAbertos > 0" style="color: red">
-                Você tem {{qtdItensAbertos}} itens recebidos abertos.
-              </p>
-              <p v-else style="color: blue">
-                Você não tem itens recebidos abertos.
-              </p>
+<!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <vue-typed-js :strings="['Nos oferecemos um sistema de compartilhamento moderno!']" :loop="true" :showCursor="false" class="d-flex justify-content-around">
+            <h1 class="typing" data-aos="fade-up"></h1>
+          </vue-typed-js>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
             </div>
           </div>
         </div>
-      </div>
-  
-      <div class="row marketing">
-        <div class="col-md-offset-1 col-md-4">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. </p>
-        </div>
-
-        <div class="col-md-offset-2 col-md-4">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna, consectetur ac, vestibulum at eros. </p>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="/src/assets/img/hero-img.png" class="img-fluid" alt="">
         </div>
       </div>
     </div>
 
-    <div class="row footer-row">
-      <div class="col-md-offset-1 col-md-10">
-        <div class="footer">
-          <p>©2020 UNIRIO, Universidade Federal do Estado do Rio de Janeiro</p>
+  </section><!-- End Hero -->
+
+  <!-- ======= Values Section ======= -->
+    <section id="values" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Nossos valores</h2>
+          <p>Alguns dos nossos valores</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <img src="/src/assets/img/values-1.png" class="img-fluid" alt="">
+              <h3>Senso de comunidade</h3>
+              <p>Faca parte de uma comunidade incrivel, onde voce pode interagir e fazer amizades.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <img src="/src/assets/img/values-2.png" class="img-fluid" alt="">
+              <h3>Inovacao</h3>
+              <p>Compartilhe qualquer tipo de item, sendo eles unicos ou multiplos.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+              <img src="/src/assets/img/values-3.png" class="img-fluid" alt="">
+              <h3>Flexibilidade.</h3>
+              <p>Cancele seus compartilhamentos a hora que achar mais conveniente com seguranca garantida.</p>
+            </div>
+          </div>
+
         </div>
+
       </div>
-    </div>
+
+    </section><!-- End Values Section -->
+
+ <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Características</h2>
+          <p>Algumas de nossas características</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <img src="/src/assets/img/features.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
+            <div class="row align-self-center gy-4">
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Seguranca</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Facilidade</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Flexibilidade</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Inovacao</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Comunidade</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>Inclusao</h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div> <!-- / row -->
+        </div>
+
+    </section><!-- End Features Section -->
+
+
+
+
   </div>
 </template>
 
@@ -82,6 +183,8 @@
       axios.get(`/api/compartilhamento/?idUsuario=${this.$root.credentials.id}`,this.httpOptions)
         .then(response => {
           this.qtdItensAbertos = response.data.data.filter(item => item.status == "ABERTO").length;
+          console.log("===================================");
+          console.log(this.qtdItensAbertos);
         })
         .catch(error => {
           this.error = error.response.data.errors;
@@ -91,17 +194,7 @@
 </script>
 
 <style lang="css" scoped>
-div.jumbotron-row {
+div.jumbotron {
   margin-top: 32px;
-}
-.marketing h4 {
-  font-size: 20px;
-}
-.footer {
-    margin-top: 64px;
-    margin-bottom: 32px;
-    padding-top: 8px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
 }
 </style>

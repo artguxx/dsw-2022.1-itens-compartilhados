@@ -1,16 +1,38 @@
 <template lang="html">
-  <div class="senha-trocada row">
-    <div class="col-md-4 col-md-offset-4 text-left">
-      <h2 class="form-title">Senha trocada!</h2>
-      <h6 class="form-subtitle">A sua senha foi trocada. Você deve utilizar esta nova senha para acessar o sistema nas próximas vezes.</h6>
-      
-      <div class="link-home">
-        <router-link class="link" :to="{ name: 'home' }">
-          Ir para a homepage.
-        </router-link>
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Trocar Senha</li>
+        </ol>
+        <h2>Trocar Senha</h2>
+
       </div>
-    </div>
-  </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="senha-trocada row">
+          <div class="col-md-10 col-md-offset-1 text-left">
+            <h2 class="form-title">Senha trocada!</h2>
+            <h6 class="form-subtitle mx-3">A sua senha foi trocada. Você deve utilizar esta nova senha para acessar o sistema nas próximas vezes.</h6>
+            
+            <div class="link-home">
+              <router-link class="link" :to="{ name: 'home' }">
+                Ir para a homepage.
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+ 
 </template>
 
 <script>

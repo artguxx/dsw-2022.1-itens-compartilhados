@@ -1,37 +1,59 @@
 <template lang="html">
-  <div class="login row" v-if="!$root.credentials">
-    <div class="col-md-4 col-md-offset-4 text-left">
-      <h2 class="form-title">Login</h2>
-      <h6 class="form-subtitle">Entre com as suas credenciais para o login.</h6>
+  <main id="main">
 
-      <form @submit.prevent="processForm">
-        <div class="form-group">
-          <label for="username">Login</label>
-          <input type="text" class="form-control" id="username" placeholder="Entre o seu login" v-model="form.email">
-          <span class="error" v-if="error.all">{{error.all}}</span>
-        </div>
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
 
-        <div class="form-group">
-          <label for="password">Senha</label>
-          <input type="password" class="form-control" id="password" placeholder="Entre e sua senha" v-model="form.senha" autocomplete="on">
-        </div>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Login</li>
+        </ol>
+        <h2>Login</h2>
 
-        <button type="submit" class="btn btn-primary">Envia</button>
-      </form>
-
-      <div class="link-recuperar-senha">
-        <router-link class="link" :to="{ name: 'forgot-password' }" replace>
-          Recuperar a minha senha
-        </router-link>
       </div>
-      
-      <div class="link-criar-conta">
-        <router-link class="link" :to="{ name: 'create-account' }" replace>
-          Criar nova conta
-        </router-link>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="row" v-if="!$root.credentials">
+          <div class="col-md-10 col-md-offset-1 text-left">
+            <h2 class="form-title">Login</h2>
+            <h6 class="form-subtitle mx-3">Entre com as suas credenciais para o login.</h6>
+
+            <form @submit.prevent="processForm">
+              <div class="form-group">
+                <label for="username">Login</label>
+                <input type="text" class="form-control" id="username" placeholder="Entre o seu login" v-model="form.email">
+                <span class="error" v-if="error.all">{{error.all}}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" placeholder="Entre e sua senha" v-model="form.senha" autocomplete="on">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="background-color: #4154f1;">Logar</button>
+            </form>
+
+            <div class="link-recuperar-senha">
+              <router-link class="link" :to="{ name: 'forgot-password' }" replace>
+                Recuperar a minha senha
+              </router-link>
+            </div>
+            
+            <div class="link-criar-conta">
+              <router-link class="link" :to="{ name: 'create-account' }" replace>
+                Criar nova conta
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+  </main><!-- End #main -->
+  
 </template>
 
 <script>
