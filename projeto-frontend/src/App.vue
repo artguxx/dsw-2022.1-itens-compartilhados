@@ -13,10 +13,10 @@
             <li><a class="nav-link scrollto" href="/">Home</a></li>
             <li v-if="$root.credentials"><router-link class="link" :to="{ name: 'item-list' }">Itens Compartilhados</router-link></li>
             <li v-if="$root.credentials"><router-link class="link" :to="{ name: 'item-recebido' }">Itens Recebidos</router-link></li>
-            <li class="dropdown"  v-if="$root.credentials"><a class="getstarted scrollto"><span>Olá, {{$root.credentials.nome}}</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"  v-if="$root.credentials"><a class="getstarted scrollto"><span class="text-white">Olá, {{$root.credentials.nome}}</span></a>
               <ul>            
                 <li><router-link :to="{ name: 'change-password' }">Trocar senha</router-link></li>
-                <li><a class="link" @click="logout" style="cursor: pointer;">Logout</a></li>
+                <li><a @click="logout" style="cursor: pointer;">Logout</a></li>
               </ul>
             </li>
             <li v-else><router-link class="getstarted scrollto" :to="{ name: 'login' }">Login</router-link></li>
