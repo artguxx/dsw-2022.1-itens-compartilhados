@@ -25,10 +25,6 @@
                   <h6 class="form-subtitle mx-3">Abaixo estão os seus itens recebidos.</h6>
                 </div>
                 </div>
-                
-                <div class="form-inline">
-                  <input class="form-control" @keyup="processForm()" type="search" placeholder="Pesquisar" aria-label="Search" id="inputFiltro" v-model="filtro" v-on:keyup.enter="processForm">
-                </div>
               </div>
 
             <table class="table table-striped" id="tbItens">
@@ -117,9 +113,10 @@ export default {
 
   methods: {
     processForm: function() {
-      axios.get(`/api/compartilhamento/?idUsuario=${this.$root.credentials.id}`,this.httpOptions)
+      axios.get(`/api/compartilhamento/?idUsuario=${this.$root.credentials.id}&filter=${this.filtro}`,this.httpOptions)
         .then(response => {
           this.items = response.data.data;
+          console.log(this.items)
         })
         .catch(error => {
           this.error = error.response.data.errors;
